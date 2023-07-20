@@ -1,42 +1,46 @@
 <script setup>
+const persons=[
+    {
+        id:1,
+        name:"Jane Doe",
+        profilePhoto:"https://tailus.io/sources/blocks/classic/preview/images/woman1.jpg",
+        jobTitle:"CEO,Co-Founder"
+    },
+    {
+        id:2,
+        name:"Jhon Doe",
+        profilePhoto:"https://tailus.io/sources/blocks/classic/preview/images/man.jpg",
+        jobTitle:"CTO"
+    },
+    {
+        id:3,
+        name:"Jessy Doe",
+        profilePhoto:"https://tailus.io/sources/blocks/classic/preview/images/woman.jpg",
+        jobTitle:"COD"
+    }
+]
 
-const tasks=[ 
-   {id:1, title:"complete project proposel",status:"Completed"},
-   {id:2,title:"Update website content",status:"In Progress"},
-   {id:3,title:"Fix bug in user authentication",status:"Completed"},
-   {id:4,title:"prepare Presentation Slide",status:"In Progress"},
-   {id:5,title:"Software update",status:"Completed"}
-];
-
-function getCompleteStatus(){
-    return tasks.filter(task=>"Completed"==task.status)
-}
-
-function getInprogressStatus(){
-    return tasks.filter(task=>"In Progress"==task.status)
-}
-
-const persons={
-    name:"Aminul",
-    age:"23",
-    email:"aminul@gmail.com"
-}
 </script>
 
 <template>
-  <body class="p-10">
-    <section class="mx-auto container flex items-center text-center flex-col space-y-2">
-        <!-- <div class="p-5 border border-gray-600 w-40" v-for="task in tasks" :key="task.id">{{task.id}}-{{ task.title }}</div> -->
-        <!-- <div class="p-5 border border-gray-600 w-40" v-for="(task,index) in tasks" :key="index">{{task.id}}-{{ task.title }}</div> -->
-        <h2>Completed Status</h2>
-         <div class="p-5 border border-gray-600 w-40" v-for="(task,index) in tasks" v-show="task.status=='Completed'" :key="index">{{task.id}}-{{ task.title }}</div>
-        <!-- <div class="p-5 border border-gray-600 w-40" v-for="task in getCompleteStatus()" :key="task.id">{{task.id}}-{{ task.title }}</div> -->
-        <h2>In Progress Status</h2>
-        <div class="p-5 border border-gray-600 w-40" v-for="task in getInprogressStatus()" :key="task.id">{{task.id}}-{{ task.title }}</div>
-        <h2>object Loop</h2> 
-         <div class="p-5 border border-gray-600 w-40" v-for="(value,key,index) in persons" :key="index">{{index+1}}-{{key}} : {{ value }}</div> 
-
-    </section>
+<body class="p-10">
+    <div class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 px-32">
+            <div class="mb-16 text-center">
+                <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold text-4xl">Team Member</h2>
+                <p class="text-gray-600 w-8/12 mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni deleniti veniam laudantium itaque perferendis dolor maxime incidunt voluptatem. </p>
+            </div>
+            <div class="grid gap-12 items-center grid-cols-3" >
+                <div class="space-y-4 text-center" v-for="person in persons" :key="person.id">
+                    <img class="w-64 h-64 mx-auto object-cover rounded-xl w-64 h-64" :src="person.profilePhoto">
+                    <div>
+                        <h4 class="text-2xl">{{person.name}}</h4>
+                        <span class="block text-sm text-gray-500">{{person.jobTitle}}</span>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
 </body>
 </template>
 
